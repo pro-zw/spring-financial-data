@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: layout_header(~{::title},~{})">
+    <title th:text="#{homepage.nav}">Home</title>
+</head>
+<body th:replace="layout :: layout_body('home', ~{::content}, ~{})">
+    <th:block th:fragment="content">
+        <div class="jumbotron">
+            <h1 th:text="#{homepage.jumbotron.head}">Financial Data</h1>
+            <p th:text="#{homepage.jumbotron.paragraph.first}">The purpose of this website is to collect interesting financial data all over the world which can help you do investment on different kinds of assets (e.g. stock, bond etc.) We are particularly interested in collecting the data which can be used to evaluate and compare the relative valuation of those assets, such as pe ratio etc.</p>
+            <p th:text="#{homepage.jumbotron.paragraph.second}">Currently, we only collect data on some iShare ETFs that target markets of several major countries. More data will be available in the future.</p>
+        </div>
+    </th:block>
+</body>
+</html>

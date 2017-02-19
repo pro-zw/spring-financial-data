@@ -1,0 +1,1 @@
+CREATE TYPE currency_code AS ENUM ('AUD', 'CAD', 'CHF', 'CNY', 'EUR', 'GBP', 'JPY', 'USD');

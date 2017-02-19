@@ -1,0 +1,28 @@
+DROP TABLE IF EXISTS etf_index CASCADE;
+CREATE TABLE IF NOT EXISTS etf_index (
+  id serial NOT NULL,
+  inception_date DATE NOT NULL,
+  asset_class VARCHAR(32) NOT NULL,
+  name VARCHAR(128) NOT NULL,
+  exchange_market VARCHAR(64) NOT NULL,
+  etf_index_config_id INT NOT NULL,
+  net_assets DECIMAL (32, 6),
+  net_assets_record_date DATE,
+  net_assets_currency_code currency_code,
+  shares_outstanding BIGINT,
+  shares_outstanding_record_date DATE,
+  number_of_holdings INT,
+  number_of_holdings_record_date DATE,
+  closing_price DECIMAL(18, 6),
+  closing_price_record_date DATE,
+  closing_price_currency_code currency_code,
+  pe_ratio FLOAT,
+  pe_ratio_record_date DATE,
+  pb_ratio FLOAT,
+  pb_ratio_record_date DATE,
+  distribution_yield FLOAT,
+  distribution_yield_record_date DATE,
+  CONSTRAINT etf_index_pkey PRIMARY KEY (id),
+  CONSTRAINT etf_index_etf_index_config_id_ukey UNIQUE (etf_index_config_id),
+  CONSTRAINT etf_index_etf_index_config_id_fkey FOREIGN KEY (etf_index_config_id) REFERENCES etf_index_config(id)
+);

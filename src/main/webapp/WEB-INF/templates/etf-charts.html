@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: layout_header(~{::title},~{})">
+    <title th:text="#{etfspage.nav}">ETFs</title>
+</head>
+<body th:replace="layout :: layout_body('etfs-page', ~{::content}, ~{::script})">
+
+    <th:block th:fragment="content">
+        <div class="btn-group" role="group" id="charts-types"></div>
+        <div class="row" style="padding-bottom: 12px; padding-top: 12px;">
+            <div class="col-md-12" th:text="${index.name}" style="text-align: center;"></div>
+        </div>
+        <div class="row" id="charts-row" style="padding-top: 12px;"></div>
+        <div class="row" style="padding-top: 12px; font-style: italic;">
+            <div class="col-md-12">* Data Source: <a th:text="${index.config.url}" th:href="${index.config.url}" target="_blank"></a></div>
+        </div>
+    </th:block>
+
+    <script src="/webjars/chartjs/2.1.3/Chart.min.js"></script>
+    <script th:inline="javascript">
+        var indexId = /*[(${index.id})]*/ 1;
+    </script>
+    <script src="/resources/js/etf-charts.js"></script>
+</body>
